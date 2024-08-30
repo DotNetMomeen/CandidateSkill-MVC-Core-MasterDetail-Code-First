@@ -1,0 +1,109 @@
+﻿@model IEnumerable<Candidate_Skill_MVC_CORE_MasterDetails.Models.Skill>
+
+@{
+    ViewData["Title"] = "Skills";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <div class="card shadow-sm">
+
+                <div class="card-header bg-primary text-white text-center">
+                    <h4>All Skill List Information</h4>
+                </div>
+
+                <div class="card-body">
+                    <div class="mb-3 text-end">
+                        <a asp-action="Create" class="btn btn-success">
+                            <i class="fa fa-plus"></i> Create New Skill
+                        </a>
+                    </div>
+
+                    <table class="table table-bordered table-striped">
+
+                        <thead class="thead-dark">
+                            <tr class="text-center">
+                                <th>
+                                    @Html.DisplayNameFor(model => model.SkillName)
+                                </th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.SkillName)
+                                    </td>
+                                    <td class="text-end">
+                                        <a asp-action="Edit" asp-route-id="@item.SkillId" class="btn btn-sm btn-warning">
+                                            <i class="fa fa-edit"></i> Edit
+                                        </a>
+
+                                        <a asp-action="Details" asp-route-id="@item.SkillId" class="btn btn-sm btn-info">
+                                            <i class="fa fa-info-circle"></i> Details
+                                        </a>
+                                       
+                                        <a asp-action="Delete" asp-route-id="@item.SkillId" class="btn btn-sm btn-danger">
+                                            <i class="fa fa-trash"></i> Delete
+                                        </a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                <div class="card-footer text-center">
+                    <p class="text-muted mb-0">
+                        Master your skills effortlessly and with precision.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+@* @model IEnumerable<Candidate_Skill_MVC_CORE_MasterDetails.Models.Skill>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.SkillName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.SkillName)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.SkillId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.SkillId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.SkillId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+ *@

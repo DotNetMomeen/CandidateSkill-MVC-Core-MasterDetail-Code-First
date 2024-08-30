@@ -1,0 +1,119 @@
+﻿@model IEnumerable<Candidate_Skill_MVC_CORE_MasterDetails.Models.Candidate>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col">
+            <div class="d-flex justify-content-end mb-3">
+                <a class="btn btn-outline-primary" asp-action="Create" asp-controller="Candidates">
+                    <i class="fa fa-plus"></i> Add New Candidate
+                </a>
+            </div>
+            @foreach (var item in Model)
+            {
+                <div class="card mb-4 shadow-sm">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <div class="d-flex align-items-center">
+                            <img src="@item.Image" width="50" height="50" class="rounded-circle me-3" alt="Candidate Image" />
+                            <div>
+                                <small class="text-muted">Candidate ID: @Html.DisplayFor(x => item.CandidateId)</small><br />
+                                <h5 class="mb-0">@Html.DisplayFor(x => item.CandidateName)</h5>
+                                <small class="text-muted">DOB: @Html.DisplayFor(x => item.DateOfBirth)</small><br />
+                                <small class="text-muted">Phone: @Html.DisplayFor(x => item.Phone)</small><br />
+                                <small class="text-muted">Fresher: @Html.DisplayFor(x => item.Fresher)</small>
+                            </div>
+                        </div>
+                        <div>
+                            <a asp-action="Edit" asp-controller="Candidates" class="btn btn-success btn-sm" asp-route-id="@item.CandidateId">
+                                <i class="fa fa-edit"></i> Edit
+                            </a>
+                            <a asp-action="Delete" asp-controller="Candidates" class="btn btn-danger btn-sm" asp-route-id="@item.CandidateId">
+                                <i class="fa fa-trash"></i> Delete
+                            </a>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <h6 class="fw-bold">Skills Information: </h6>
+                        @if (item.CandidateSkills != null && item.CandidateSkills.Any())
+                        {
+                            <ul class="list-group list-group-flush">
+                                @foreach (var skill in item.CandidateSkills)
+                                {
+                                    <li class="list-group-item">
+                                        <b>Skill Id:</b> @Html.DisplayFor(x => skill.SkillId) <br />
+                                        <b>Skill Name:</b> @Html.DisplayFor(x => skill.Skill.SkillName)
+                                    </li>
+                                }
+                            </ul>
+                        }
+                        else
+                        {
+                            <p>No skills assigned.</p>
+                        }
+                    </div>
+                </div>
+            }
+            
+        </div>
+    </div>
+
+
+
+
+
+
+
+@* @model IEnumerable<Candidate_Skill_MVC_CORE_MasterDetails.Models.Candidate>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="row">
+    <div class="col">
+        <div class="d-flex justify-content-end">
+            <a class="btn btn-outline-primary mb-2" asp-action="Create" asp-controller="Candidates">Add New Candidate</a>
+        </div>
+        @foreach (var item in Model)
+        {
+            <div class="card mb-4">
+                <div class="card-header d-flex justify-content-between">
+                    <div>
+                        <img src="@item.Image" width="35" class="rounded-circle" />
+                        <b>Name :</b> @Html.DisplayFor(x => item.CandidateName)
+                        <b>Date of Birth :</b> @Html.DisplayFor(x => item.DateOfBirth)
+                        <b>Phone :</b> @Html.DisplayFor(x => item.Phone)
+                        <b>Fresher :</b> @Html.DisplayFor(x => item.Fresher)
+                    </div>
+                    <div>
+                        <a asp-action="Edit" asp-controller="Candidates" class="btn btn-success btn-sm" asp-route-id="@item.CandidateId">Edit</a>
+                        <a asp-action="Delete" class="btn btn-danger btn-sm" asp-controller="Candidates" asp-route-id="@item.CandidateId">Delete</a>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <table class="table table-bordered table-striped table-sm">
+                        <thead>
+                            <tr class="fw-bold">
+                                <th>Skill Id</th>
+                                <th>Skills</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var i in item.CandidateSkills)
+                            {
+                                <tr>
+                                    <td>@Html.DisplayFor(x => i.SkillId)</td>
+                                    <td>@Html.DisplayFor(x => i.Skill.SkillName)</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+ *@
